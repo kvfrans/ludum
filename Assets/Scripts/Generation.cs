@@ -14,12 +14,12 @@ public class Generation : MonoBehaviour {
                 Transform atTile = null;
                 if ((x == 0 || x == 19 || y == 0 || y == 19) && x % 3 == 0) {
                     atTile = wall;
+                    Transform t = Instantiate(atTile, new Vector3(x*2, y*2, 0), Quaternion.identity);
                 }
                 else {
                     atTile = floor;
                 }
 
-                Transform t = Instantiate(atTile, new Vector3(x*2, y*2, 0), Quaternion.identity);
             }
         }
     }
