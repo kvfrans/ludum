@@ -54,7 +54,9 @@ public class Player : MonoBehaviour {
         spriteBody.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(spriteBody.localEulerAngles.z, bodyAng + Mathf.Sin(bodyrot)*30, Time.deltaTime*10));
         camerarot = Mathf.Atan2(transform.position.y - 200, transform.position.x) * Mathf.Rad2Deg + 90;
         transform.localEulerAngles = new Vector3(0, 0, camerarot);
-        gun.localEulerAngles = new Vector3(0, 0, ang);
+        if (gun != null) {
+            gun.localEulerAngles = new Vector3(0, 0, ang);
+        }
 
         if (Input.GetMouseButtonDown(0)) {
             Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang)*0.3f, Quaternion.identity);
@@ -70,12 +72,10 @@ public class Player : MonoBehaviour {
             cameras.localEulerAngles = new Vector3(0,0,0);
             cameras.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*5), 0.2f);
             cameras.DOPunchPosition(Custom.RandomInUnitCircle()*0.2f, 0.2f);
-            GameFlow.Instance.hueShift += 10;
         }
 
         if (Input.GetMouseButtonDown(1)) {
             dashVelocity = Custom.VectorFromDir(ang) * 50;
-            GameFlow.Instance.hueShift += 10;
         }
     }
     

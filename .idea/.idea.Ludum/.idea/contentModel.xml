@@ -24,6 +24,7 @@
           <e p="buttonController.cs" t="Include" />
           <e p="Custom.cs" t="Include" />
           <e p="Destroyer.cs" t="Include" />
+          <e p="Enemy.cs" t="Include" />
           <e p="FadeOut.cs" t="Include" />
           <e p="GameFlow.cs" t="Include" />
           <e p="Generation.cs" t="Include" />
@@ -31,6 +32,7 @@
           <e p="Player.cs" t="Include" />
           <e p="ScaleIn.cs" t="Include" />
           <e p="SongManager.cs" t="Include" />
+          <e p="Timer.cs" t="Include" />
         </e>
       </e>
       <e p="Ludum.sln" t="IncludeFlat" />

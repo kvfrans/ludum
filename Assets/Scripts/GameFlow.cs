@@ -18,11 +18,13 @@ public class GameFlow : MonoBehaviour {
         }
     }
 
+    public Transform cameras;
     public Transform ppv;
     private Volume v;
     ColorAdjustments ca;
 
     public float hueShift = 0;
+    
     // Start is called before the first frame update
     void Start() {
         hueShift = 180;
@@ -32,11 +34,8 @@ public class GameFlow : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        hueShift += Time.deltaTime*2;
-        if (hueShift > 360) {
-            hueShift -= 360;
-        }
-        ca.hueShift.value = hueShift - 180;
+        hueShift += Time.deltaTime*0.5f;
+        ca.hueShift.value = Mathf.Sin(hueShift) * 20;
     }
 
     private void OnDisable() {
