@@ -14,8 +14,9 @@ public class BeatScroller : MonoBehaviour
     void Start()
     {
         tempo = tempo/60f; //beats per s
-        timer = 0; 
-        scrollSpeed = tempo;
+         
+        scrollSpeed = distanceToClicker/4*(1/tempo); //whole bar is 4 beats
+        timer = distanceToClicker/scrollSpeed;
         spawnInterval = 1/tempo;//second per beat
         
     }
@@ -37,6 +38,7 @@ public class BeatScroller : MonoBehaviour
             {
                 GameObject note =Instantiate(beat, transform);
                 note.GetComponent<NoteController>().speed = new Vector3(-scrollSpeed,0f,0f);
+                note.transform.position = transform.position;
                 timer = spawnInterval; 
             }
         }

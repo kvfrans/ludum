@@ -14,6 +14,6 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + speed * Time.deltaTime;
+        transform.localPosition = transform.localPosition + speed * Time.deltaTime;
     }
 }
