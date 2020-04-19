@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4743975695022790209
 Transform:
   m_ObjectHideFlags: 0
@@ -320,10 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30913264f2fab4a6f9a82031cc7bd80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera2d: {fileID: 0}
+  cameras: {fileID: 0}
   spriteBody: {fileID: 4743975696407399833}
   gun: {fileID: 4743975696126391465}
   bullet: {fileID: 7141980380625448717, guid: c59cc39c6efe248c8847af9b9f217dbb, type: 3}
+  bulletOnShoot: {fileID: 0}
 --- !u!58 &4743975695835635612
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -653,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
+  m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []

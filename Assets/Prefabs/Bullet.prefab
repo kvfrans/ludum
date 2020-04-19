@@ -167,6 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleTime: 0.1
-  scaleStartTime: 0.5
+  scaleStartTime: 0.8
   destroy: 1
   finalScale: {x: 0, y: 0}

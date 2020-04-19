@@ -52,20 +52,20 @@ public class Player : MonoBehaviour {
 
         float bodyAng = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 90;
         spriteBody.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(spriteBody.localEulerAngles.z, bodyAng + Mathf.Sin(bodyrot)*30, Time.deltaTime*10));
-        camerarot = Mathf.Atan2(transform.position.y - 200, transform.position.x) * Mathf.Rad2Deg + 90;
+        camerarot = Mathf.Atan2(transform.position.y - 200, transform.position.x*2) * Mathf.Rad2Deg + 90;
         transform.localEulerAngles = new Vector3(0, 0, camerarot);
         if (gun != null) {
             gun.localEulerAngles = new Vector3(0, 0, ang);
         }
 
         if (Input.GetMouseButtonDown(0)) {
-            Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang)*0.3f, Quaternion.identity);
-            bo.GetComponent<Rigidbody2D>().velocity += rb.velocity * 0.8f;
+            Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang)*0.3f + new Vector3(0,0,-2), Quaternion.identity);
+//            bo.GetComponent<Rigidbody2D>().velocity += rb.velocity * 0.8f;
 
             for (int i = 0; i < 6; i++) {
-                Transform b = Instantiate(bullet, transform.position, Quaternion.identity);
-                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni()*10) * (10 + Random.value * 5);
-                b.GetComponent<Rigidbody2D>().velocity += rb.velocity * 0.8f;
+                Transform b = Instantiate(bullet, transform.position + new Vector3(0,0,-2), Quaternion.identity);
+                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni()*10 + camerarot) * (10 + Random.value * 5);
+//                b.GetComponent<Rigidbody2D>().velocity += rb.velocity * 0.8f;
             }
 
             cameras.DOKill();
