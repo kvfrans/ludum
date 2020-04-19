@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour {
 
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour {
     public List<SpriteRenderer> sprites;
     public float health;
     private Timer flashDur;
+    private bool dead = false;
     
     // Start is called before the first frame update
     void Start() {
@@ -53,7 +56,7 @@ public class Enemy : MonoBehaviour {
     }
     
     public void Damage(float dmg, bool force) {
-        if (noDamageTimer <= 0 && (takeDamage||force)) {
+        if (noDamageTimer <= 0 && (takeDamage || force)) {
             if (redirectDamage) {
                 redirectDamageTarget.GetComponent<Enemy>().Damage(dmg, true);
             }
@@ -67,7 +70,10 @@ public class Enemy : MonoBehaviour {
 
             if (health <= 0 && destroyOnDeath) {
                 SendMessage(("Death"), SendMessageOptions.DontRequireReceiver);
-                DestroyEnemy();
+                if (!dead) {
+                    dead = true;
+                    DestroyEnemy();
+                }
             }
         }
     }
@@ -78,7 +84,21 @@ public class Enemy : MonoBehaviour {
         GameFlow.Instance.cameras.localEulerAngles = new Vector3(0,0,0);
         GameFlow.Instance.cameras.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*8), 0.2f);
         GameFlow.Instance.cameras.DOPunchPosition(Custom.RandomInUnitCircle()*0.5f, 0.2f);
-        Instantiate(onDeath, transform.position, Quaternion.identity);
+        Transform s = Instantiate(onDeath, transform.position, Quaternion.identity);
+        s.eulerAngles = new Vector3(0, 0, Random.value*360);
+        s.localScale = new Vector3(1 + Custom.RandUni()*0.2f, 1 + Custom.RandUni()*0.2f, 1);
+        foreach (var spr in sprites) {
+            spr.color = new Color(1,1,1,0);
+        }
+        StartCoroutine(Pause());
+    }
+
+    IEnumerator Pause() {
+        Time.timeScale = 0;
+        Time.fixedDeltaTime = 0;
+        yield return new WaitForSecondsRealtime(0.05f);
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f * 1;
         Destroy(gameObject);
     }
 }

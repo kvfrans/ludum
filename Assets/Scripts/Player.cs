@@ -39,16 +39,16 @@ public class Player : MonoBehaviour {
             vert = 0;
         }
         rb.velocity = Rotate(new Vector2(horiz, vert), camerarot*Mathf.Deg2Rad) * 5;
+        if (rb.velocity.magnitude > 0) {
+            bodyrot += Time.deltaTime * 10;
+        }
+        
         rb.velocity += dashVelocity;
         dashVelocity *= (1 - Time.deltaTime*10);
 
 
         Vector3 mousePosition = Input.mousePosition;
         float ang = Mathf.Atan2( mousePosition.y - Screen.height/2.0f,  mousePosition.x - Screen.width/2.0f) * Mathf.Rad2Deg;
-        
-        if (rb.velocity.magnitude > 0) {
-            bodyrot += Time.deltaTime * 10;
-        }
 
         float bodyAng = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 90;
         spriteBody.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(spriteBody.localEulerAngles.z, bodyAng + Mathf.Sin(bodyrot)*30, Time.deltaTime*10));

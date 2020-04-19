@@ -19,4 +19,6 @@ public class Custom : MonoBehaviour
     public static Vector3 Vector3FromDir(float dir) {
         return new Vector3(Mathf.Cos(dir*Mathf.Deg2Rad), Mathf.Sin(dir*Mathf.Deg2Rad), 0);
     }
+    
+    
 }

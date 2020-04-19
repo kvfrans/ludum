@@ -18,6 +18,7 @@ public class GameFlow : MonoBehaviour {
         }
     }
 
+    public Transform player;
     public Transform cameras;
     public Transform ppv;
     private Volume v;
@@ -35,7 +36,7 @@ public class GameFlow : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         hueShift += Time.deltaTime*0.5f;
-        ca.hueShift.value = Mathf.Sin(hueShift) * 20;
+//        ca.hueShift.value = Mathf.Sin(hueShift) * 20;
     }
 
     private void OnDisable() {
