@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour {
     public bool isBoss = false;
     public bool destroyOnDeath = true;
     public float totalhealth;
-    public Transform sprite;
     public Transform onDeath;
     private float noDamageTimer = 0;
     public bool takeDamage = true;
@@ -18,14 +17,13 @@ public class Enemy : MonoBehaviour {
     public Transform redirectDamageTarget;
     public bool redirectDamage = false;
     
-    private SpriteRenderer spr;
+    public List<SpriteRenderer> sprites;
     public float health;
     private Timer flashDur;
     
     // Start is called before the first frame update
     void Start() {
         health = totalhealth;
-        spr = sprite.GetComponent<SpriteRenderer>();
         flashDur = gameObject.AddComponent<Timer>();
     }
 
@@ -33,7 +31,9 @@ public class Enemy : MonoBehaviour {
     void Update()
     {
         if (flashDur.wasJustDone) {
-            spr.material.SetFloat("_FlashAmount", 0);
+            foreach (var spr in sprites) {
+                spr.material.SetFloat("_FlashAmount", 0);
+            }
         }
         if (noDamageTimer > 0) {
             noDamageTimer -= Time.deltaTime;
@@ -59,7 +59,9 @@ public class Enemy : MonoBehaviour {
             }
             health -= dmg;
             if (flashOnHit) {
-                spr.material.SetFloat("_FlashAmount", 1);
+                foreach (var spr in sprites) {
+                    spr.material.SetFloat("_FlashAmount", 1);
+                }
                 flashDur.time = 0.05f;
             }
 

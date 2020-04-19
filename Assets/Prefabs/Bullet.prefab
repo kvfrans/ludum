@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7141980380625448716}
   - component: {fileID: 3513254542382534670}
   - component: {fileID: 3028825190303306641}
-  - component: {fileID: -4161891111712785499}
+  - component: {fileID: -7041767355691329802}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7141980380625448719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 3.25, z: -3}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f9231d57e9e74ba2873dc2bcbcd1697, type: 3}
-  m_Color: {r: 1, g: 0.33490568, b: 0.33490568, a: 0.59607846}
+  m_Sprite: {fileID: 21300000, guid: 4f1fc5aab1adc47d7b86700aa1f7eaa0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleTime: 0.1
   initialScale: {x: 0, y: 0}
---- !u!114 &-4161891111712785499
+--- !u!114 &-7041767355691329802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,9 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7141980380625448719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57131ce6f404e4bdba3515c1a596a973, type: 3}
+  m_Script: {fileID: 11500000, guid: 50b348fbf67c5466ab93ae14aa53ba02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.1
-  startTime: 0.2
-  destroyAfter: 1
+  scaleTime: 0.1
+  scaleStartTime: 0.2
+  destroy: 1
+  finalScale: {x: 0, y: 0}

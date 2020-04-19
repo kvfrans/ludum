@@ -1088,7 +1088,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30913264f2fab4a6f9a82031cc7bd80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameras: {fileID: 0}
   spriteBody: {fileID: 1015371259}
+  gun: {fileID: 0}
+  bullet: {fileID: 0}
+  bulletOnShoot: {fileID: 0}
 --- !u!4 &1588119548
 Transform:
   m_ObjectHideFlags: 0
@@ -1560,9 +1564,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2017227984}
   - component: {fileID: 2017227986}
-  - component: {fileID: 2017227985}
   - component: {fileID: 2017227988}
   - component: {fileID: 2017227987}
+  - component: {fileID: 2017227985}
   m_Layer: 5
   m_Name: Clicker
   m_TagString: clicker
@@ -1596,9 +1600,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a02c947e4bb64387c1bca62441c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unclickImg: {fileID: 21300000, guid: ef668d59902fcd0499d8d9794360bc81, type: 3}
-  clickImg: {fileID: 21300000, guid: 81f93f9373d04164e998eaeca15a3e7d, type: 3}
-  keyToHit: 32
+  unclickImg: {fileID: 0}
+  clickImg: {fileID: 0}
+  keyToHit: 0
 --- !u!212 &2017227986
 SpriteRenderer:
   m_ObjectHideFlags: 0

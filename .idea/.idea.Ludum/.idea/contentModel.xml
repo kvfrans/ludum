@@ -18,6 +18,9 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
+        <e p="Materials" t="Include">
+          <e p="SpriteFlashDef.shader" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="BeatScroller.cs" t="Include" />
           <e p="Bullet.cs" t="Include" />
@@ -31,6 +34,7 @@
           <e p="NoteController.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="ScaleIn.cs" t="Include" />
+          <e p="ScaleOut.cs" t="Include" />
           <e p="SongManager.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
         </e>

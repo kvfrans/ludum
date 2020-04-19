@@ -13,12 +13,12 @@ public class Bullet : MonoBehaviour {
     public Transform onHit;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-//            Enemy e = other.gameObject.GetComponent<Enemy>();
-//            e.Damage(damage);
-//            if (destroyOnHit) {
-//                DestroyBullet();
-//            }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
+            Enemy e = other.gameObject.GetComponent<Enemy>();
+            e.Damage(damage);
+            if (destroyOnHit) {
+                DestroyBullet();
+            }
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Walls") && collideWithSolid) {
             DestroyBullet();
