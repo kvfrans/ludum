@@ -8,8 +8,7 @@ public class SongManager : MonoBehaviour
     public AudioSource[] MS;
     public bool startPlaying;
     public BeatScroller bs;
-    public float songTimer=0;
-    public float timer=0;
+    public float songTimer=-1;
     public int currentSong;
     public int oldSong;
     
@@ -35,33 +34,38 @@ public class SongManager : MonoBehaviour
         if(startPlaying)
         {
             songTimer -= Time.deltaTime;
-            Debug.Log(songTimer);
             if (songTimer <=0){
                 //loop song
-                StartCoroutine(startSong(currentSong,0f));
-
+                startSong(currentSong);
             }
             if(oldSong!=currentSong){
                 //swithc songs
                 oldSong=currentSong;
-                StartCoroutine(startSong(currentSong,1f));
+                StartCoroutine(newSong(currentSong));
 
             }
 
         }
     }
 
-    IEnumerator startSong(int num,float wait){
+    void startSong(int num){
         StopAllAudio();
-        // if(startPlaying){
-        //     MS[2].Play();
-        // }
-        yield return new WaitForSeconds(wait);
-        //reset timer her and beastscroller
         startPlaying = true;
-        bs.startSong(num);
         MS[num].Play();
+        bs.startSong(num);
         songTimer = MS[num].clip.length;
+    }
+    IEnumerator newSong(int num){
+        StopAllAudio();
+        if(startPlaying){
+            MS[2].Play();
+        }
+        yield return new WaitForSeconds(0.5f);
+        startPlaying = true;
+        MS[num].Play();
+        bs.newSong(num);
+        songTimer = MS[num].clip.length;
+        Debug.Log(songTimer);
     }
     void StopAllAudio() {
      foreach(var audioS in MS) {
