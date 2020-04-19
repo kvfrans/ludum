@@ -19,21 +19,28 @@ public class NoteController : MonoBehaviour
         transform.localPosition = transform.localPosition + speed * Time.deltaTime;
         if (zone =="Perfect"){
             if (Input.GetMouseButtonDown(0)){
-                gameObject.SetActive(false);
+                Destroy(gameObject);
+            }
+        }
+        if (zone =="Good"){
+            if (Input.GetMouseButtonDown(0)){
+                Destroy(gameObject);
             }
         }
 
 
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag== "Perfect"){
-            zone = "Perfect";
-        }
+        // if (other.tag== "Perfect"){
+        //     zone = "Perfect";
+        // }
+        zone = other.tag;
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag== "Perfect"){
-            zone = "None";
-        }
+        // if (other.tag== "Perfect"){
+        //     zone = "None";
+        // }
+        zone = "none";
     }
 }
 

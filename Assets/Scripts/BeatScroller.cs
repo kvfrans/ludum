@@ -11,12 +11,13 @@ public class BeatScroller : MonoBehaviour
     public float distanceToClicker;
     public int currBeatIndex;
     public int currSongIndex;
-    public List<float> currMap;
+    public List<float> currMap = new List<float>();
+    private List<GameObject> spawnList = new List<GameObject>();
     public Hashtable[] songList = new Hashtable[2];
     private Hashtable song1 = new Hashtable();
-    public List<float> map1;
+    public List<float> map1 = new List<float>();
     private Hashtable song2 = new Hashtable();
-    public List<float> map2;
+    public List<float> map2 = new List<float>();
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class BeatScroller : MonoBehaviour
         songList[0] = song1;
 
         //song2stats
-        song2.Add("Length",14.39f);
+        song2.Add("Length",14.45f);
         song2.Add("Tempo",100f/60f);//beats per s
         song2.Add("scrollSpeed",distanceToClicker/(2/(float)song2["Tempo"]));//whole bar is 2 beat
         num = 0.6f; //offset
@@ -42,7 +43,6 @@ public class BeatScroller : MonoBehaviour
             map2.Add(num);
             if (iter%3==0){
                 num+=3f/20f*10f;
-                Debug.Log("add");
             }
             else if (iter%3==1){
                 num+=3f/20f*3f;
@@ -51,7 +51,6 @@ public class BeatScroller : MonoBehaviour
                 num+=3f/20f*3f;
             }
             iter+=1;
-            Debug.Log(num);
         }
         song2.Add("beatMap",map2);
         songList[1] = song2;
@@ -63,7 +62,7 @@ public class BeatScroller : MonoBehaviour
         if(started)
         {
             timer += Time.deltaTime;
-            if (timer > currMap[currBeatIndex]){
+            if (timer >= currMap[currBeatIndex]){
                 spawnNote(currSongIndex);
                 currBeatIndex+=1;
             }
@@ -76,11 +75,25 @@ public class BeatScroller : MonoBehaviour
         currBeatIndex = 0;
         currSongIndex = num;
     }
+    public void newSong(int num){
+        started= true;
+        timer = 0;
+        currMap =  (System.Collections.Generic.List<float>)songList[num]["beatMap"];
+        currBeatIndex = 0;
+        currSongIndex = num;
+        //clear notes
+        foreach (GameObject note in spawnList){
+            Destroy(note);
+        }
+        spawnList.Clear();
+    }
 
     void spawnNote(int num){
         GameObject note =Instantiate(beat, transform);
         note.GetComponent<NoteController>().speed = new Vector3(-(float)songList[num]["scrollSpeed"],0f,0f);
         note.transform.position = transform.position;
+        spawnList.Add(note);
+
 
     }
 }
