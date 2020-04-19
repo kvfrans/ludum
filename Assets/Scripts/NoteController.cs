@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
+    public Vector3 scale;
     public Vector3 speed;
     public string zone;
     public KeyCode pressKey;
+    public ButtonController buttonController;
     // Start is called before the first frame update
     void Start()
     {
         zone = "None";
+        transform.localScale = new Vector3(5f,5f,1f);
+        GameObject clicker = GameObject.Find("Clicker");
+        buttonController = clicker.GetComponent<ButtonController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = transform.localPosition + speed * Time.deltaTime;
+        transform.localScale = transform.localScale + speed * Time.deltaTime;
         if (zone =="Perfect"){
             if (Input.GetMouseButtonDown(0)){
+                // buttonController.onNoteHit();
                 Destroy(gameObject);
+                Debug.Log("hit");
             }
         }
-        if (zone =="Good"){
-            if (Input.GetMouseButtonDown(0)){
-                Destroy(gameObject);
-            }
+        // if (zone =="Good"){
+        //     if (Input.GetMouseButtonDown(0)){
+        //         Destroy(gameObject);
+        //     }
+        // }
+        if (transform.localScale[0]<0){
+            buttonController.onNoteMiss();
+            Destroy(gameObject);
+            
+            //miss
         }
 
 

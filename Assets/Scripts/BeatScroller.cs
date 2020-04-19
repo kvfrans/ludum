@@ -24,8 +24,8 @@ public class BeatScroller : MonoBehaviour
         //song1 stats
         song1.Add("Length",21.46f);
         song1.Add("Tempo",90f/60f);//beats per s
-        song1.Add("scrollSpeed",distanceToClicker/(2/(float)song1["Tempo"]));//whole bar is 2 beat
-        float num = 0.6f; //offset
+        song1.Add("scrollSpeed",distanceToClicker/(2f/(float)song1["Tempo"]));//whole bar is 2 beat
+        float num = 0.325f; //offset
         while (num < (float)song1["Length"]){
             map1.Add(num);
             num+=1/(float)song1["Tempo"];
@@ -36,8 +36,8 @@ public class BeatScroller : MonoBehaviour
         //song2stats
         song2.Add("Length",14.45f);
         song2.Add("Tempo",100f/60f);//beats per s
-        song2.Add("scrollSpeed",distanceToClicker/(2/(float)song2["Tempo"]));//whole bar is 2 beat
-        num = 0.6f; //offset
+        song2.Add("scrollSpeed",distanceToClicker/(2f/(float)song2["Tempo"]));//whole bar is 2 beat
+        num = 1.3f; //offset
         int iter = 0;
         while (num < (float)song2["Length"]){
             map2.Add(num);
@@ -90,7 +90,7 @@ public class BeatScroller : MonoBehaviour
 
     void spawnNote(int num){
         GameObject note =Instantiate(beat, transform);
-        note.GetComponent<NoteController>().speed = new Vector3(-(float)songList[num]["scrollSpeed"],0f,0f);
+        note.GetComponent<NoteController>().speed = new Vector3(-(float)songList[num]["scrollSpeed"],-(float)songList[num]["scrollSpeed"],0f);
         note.transform.position = transform.position;
         spawnList.Add(note);
 

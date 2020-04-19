@@ -34,7 +34,6 @@ public class SongManager : MonoBehaviour
         if(startPlaying)
         {
             songTimer -= Time.deltaTime;
-            Debug.Log(songTimer);
             if (songTimer <=0){
                 //loop song
                 startSong(currentSong);
