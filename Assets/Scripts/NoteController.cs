@@ -17,8 +17,8 @@ public class NoteController : MonoBehaviour
     void Update()
     {
         transform.localPosition = transform.localPosition + speed * Time.deltaTime;
-        if (zone =="clicker"){
-            if (Input.GetKeyDown(pressKey)){
+        if (zone =="Perfect"){
+            if (Input.GetMouseButtonDown(0)){
                 gameObject.SetActive(false);
             }
         }
@@ -26,12 +26,12 @@ public class NoteController : MonoBehaviour
 
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag== "clicker"){
-            zone = "clicker";
+        if (other.tag== "Perfect"){
+            zone = "Perfect";
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag== "clicker"){
+        if (other.tag== "Perfect"){
             zone = "None";
         }
     }

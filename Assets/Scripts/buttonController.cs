@@ -17,12 +17,12 @@ public class ButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyToHit))
+        if (Input.GetMouseButtonDown(0))
         {
             SR.sprite = clickImg;
 
         }
-        if (Input.GetKeyUp(keyToHit))
+        if (Input.GetMouseButtonUp(0))
         {
             SR.sprite = unclickImg;
         }
