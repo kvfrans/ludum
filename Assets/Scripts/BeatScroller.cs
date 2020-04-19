@@ -15,8 +15,8 @@ public class BeatScroller : MonoBehaviour
     {
         tempo = tempo/60f; //beats per s
          
-        scrollSpeed = distanceToClicker/4*(1/tempo); //whole bar is 4 beats
-        timer = distanceToClicker/scrollSpeed;
+        scrollSpeed = distanceToClicker/(2/tempo); //whole bar is 2 beat
+        timer = 4/tempo-distanceToClicker/scrollSpeed;
         spawnInterval = 1/tempo;//second per beat
         
     }
