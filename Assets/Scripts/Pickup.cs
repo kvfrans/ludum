@@ -18,7 +18,7 @@ public class Pickup : MonoBehaviour {
                 GameFlow.Instance.sm.currentSong = 3;
             }
             else {
-                GameFlow.Instance.sm.currentSong = 4;
+                GameFlow.Instance.sm.currentSong = 3;
             }
             GameFlow.Instance.sm.startPlaying = true;
             Destroy(gameObject);

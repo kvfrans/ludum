@@ -102,4 +102,15 @@ public class Enemy : MonoBehaviour {
         Time.fixedDeltaTime = 0.02f * 1;
         Destroy(gameObject);
     }
+    
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.name == "Player") {
+            if (!dead) {
+                dead = true;
+                DestroyEnemy();
+            }
+
+            GameFlow.Instance.sc.breakCombo();
+        }
+    }
 }
