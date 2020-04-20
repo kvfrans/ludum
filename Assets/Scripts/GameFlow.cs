@@ -24,6 +24,11 @@ public class GameFlow : MonoBehaviour {
     private Volume v;
     ColorAdjustments ca;
 
+    public Transform goon;
+    public Transform goon2;
+    private float goonSpawner = 0;
+    private float goonSpawner2 = 0;
+
     public float hueShift = 0;
     
     // Start is called before the first frame update
@@ -37,6 +42,18 @@ public class GameFlow : MonoBehaviour {
     void Update() {
         hueShift += Time.deltaTime*0.5f;
 //        ca.hueShift.value = Mathf.Sin(hueShift) * 20;
+
+        goonSpawner -= Time.deltaTime;
+        goonSpawner2 -= Time.deltaTime;
+        if (goonSpawner < 0) {
+            goonSpawner = 2;
+            Transform g = Instantiate(goon, new Vector3(4, 4, -0.1f) + Custom.RandomInUnitCircle() * 20, Quaternion.identity);
+        }
+        if (goonSpawner2 < 0) {
+            goonSpawner2 = 4;
+            Transform g = Instantiate(goon2, new Vector3(4, 4, -0.1f) + Custom.RandomInUnitCircle() * 20, Quaternion.identity);
+        }
+
     }
 
     private void OnDisable() {

@@ -6,9 +6,9 @@ public class ButtonController : MonoBehaviour
 {
     // Start is called before the first frame update
     private SpriteRenderer SR;
-    public Sprite unclickImg;
-    public Sprite hitImg;
-    public Sprite missImg;
+    public Color unclickImg;
+    public Color hitImg;
+    public Color missImg;
     public KeyCode keyToHit;
     private bool isNote;
     private int missedNote=-1;
@@ -25,7 +25,6 @@ public class ButtonController : MonoBehaviour
     {
         transform.Rotate (0,0,90*Time.deltaTime); 
         if (missedNote>0){
-            Debug.Log("klol");
             if (missedNote ==15){
                 scoreCounter.breakCombo();
             }
@@ -33,7 +32,7 @@ public class ButtonController : MonoBehaviour
             missedNote -=1;
         }
         if (missedNote==0){
-            SR.sprite = unclickImg;
+            SR.color = unclickImg;
             missedNote -=1;
         }
         if (Input.GetMouseButtonDown(0))
@@ -51,7 +50,7 @@ public class ButtonController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            SR.sprite = unclickImg;
+            SR.color = unclickImg;
         }
     }
 

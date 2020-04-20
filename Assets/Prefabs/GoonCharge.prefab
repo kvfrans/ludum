@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f1fc5aab1adc47d7b86700aa1f7eaa0, type: 3}
-  m_Color: {r: 0.42033947, g: 0.4811321, b: 0.36992702, a: 1}
+  m_Color: {r: 0.2971698, g: 0.5229419, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -152,7 +152,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f1fc5aab1adc47d7b86700aa1f7eaa0, type: 3}
-  m_Color: {r: 0.42033947, g: 0.4811321, b: 0.36992702, a: 1}
+  m_Color: {r: 0.2971698, g: 0.5229419, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 4474752329889511884}
   - component: {fileID: 4474752329889511887}
   - component: {fileID: 1540497993896491096}
+  - component: {fileID: -9158312789308799767}
   m_Layer: 10
   m_Name: GoonCharge
   m_TagString: Untagged
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 0
   destroyOnDeath: 1
-  totalhealth: 10
+  totalhealth: 3
   onDeath: {fileID: 7141980380625448717, guid: fe78c94a2ac9c4572a91b4334ac21f06, type: 3}
   takeDamage: 1
   flashOnHit: 1
@@ -271,6 +272,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4474752330739442208}
+--- !u!114 &-9158312789308799767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474752329889511883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0ac1f1aba38446190d72e0fef6569c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleTime: 0.3
+  initialScale: {x: 0, y: 0}
 --- !u!1 &4474752330619697553
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +357,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 82bbd2329fd0e47469e9313ad25c25a0, type: 3}
-  m_Color: {r: 0.23767357, g: 0.46226418, b: 0.40871936, a: 1}
+  m_Color: {r: 0.45790258, g: 0.2783019, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -459,7 +474,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f1fc5aab1adc47d7b86700aa1f7eaa0, type: 3}
-  m_Color: {r: 0.64054066, g: 0.7830189, b: 0.46907264, a: 1}
+  m_Color: {r: 0, g: 0.75550485, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -540,7 +555,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f1fc5aab1adc47d7b86700aa1f7eaa0, type: 3}
-  m_Color: {r: 0.42033947, g: 0.4811321, b: 0.36992702, a: 1}
+  m_Color: {r: 0.2971698, g: 0.5229419, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -621,7 +636,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f1fc5aab1adc47d7b86700aa1f7eaa0, type: 3}
-  m_Color: {r: 0.42033947, g: 0.4811321, b: 0.36992702, a: 1}
+  m_Color: {r: 0.2971698, g: 0.5229419, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
