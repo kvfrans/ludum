@@ -22,13 +22,13 @@ public class NoteController : MonoBehaviour
     void Update()
     {
         transform.localScale = transform.localScale + speed * Time.unscaledDeltaTime;
-        if (zone =="Perfect"){
-            if (Input.GetMouseButtonDown(0)){
-                // buttonController.onNoteHit();
-                Destroy(gameObject);
-                Debug.Log("hit");
-            }
-        }
+        // if (zone =="Perfect"){
+        //     if (Input.GetMouseButtonDown(0)){
+        //         // buttonController.onNoteHit();
+        //         Destroy(gameObject);
+        //         Debug.Log("hit");
+        //     }
+        // }
         // if (zone =="Good"){
         //     if (Input.GetMouseButtonDown(0)){
         //         Destroy(gameObject);
@@ -36,24 +36,28 @@ public class NoteController : MonoBehaviour
         // }
         if (transform.localScale[0]<0){
             buttonController.onNoteMiss();
-            Destroy(gameObject);
+            removeNote();
             
             //miss
         }
 
 
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        // if (other.tag== "Perfect"){
-        //     zone = "Perfect";
-        // }
-        zone = other.tag;
+
+    public void removeNote(){
+        Destroy(gameObject);
     }
-    private void OnTriggerExit2D(Collider2D other) {
-        // if (other.tag== "Perfect"){
-        //     zone = "None";
-        // }
-        zone = "none";
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     // if (other.tag== "Perfect"){
+    //     //     zone = "Perfect";
+    //     // }
+    //     zone = other.tag;
+    // }
+    // private void OnTriggerExit2D(Collider2D other) {
+    //     // if (other.tag== "Perfect"){
+    //     //     zone = "None";
+    //     // }
+    //     zone = "none";
+    // }
 }
 
