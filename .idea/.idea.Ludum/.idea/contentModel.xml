@@ -34,6 +34,7 @@
           <e p="Player.cs" t="Include" />
           <e p="ScaleIn.cs" t="Include" />
           <e p="ScaleOut.cs" t="Include" />
+          <e p="ScoreCounter.cs" t="Include" />
           <e p="SongManager.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
         </e>
