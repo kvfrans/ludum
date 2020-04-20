@@ -40,6 +40,7 @@ public class NoteController : MonoBehaviour
             buttonController.onNoteMiss();
             removeNote();
             
+            
             //miss
         }
 
