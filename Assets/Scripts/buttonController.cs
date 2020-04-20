@@ -14,10 +14,12 @@ public class ButtonController : MonoBehaviour
     private int missedNote=-1;
     public GameObject sc;
     private ScoreCounter scoreCounter;
+    private AudioSource audioSource;
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
         scoreCounter = sc.GetComponent<ScoreCounter>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class ButtonController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            audioSource.Play();
             if (isNote){
                 SR.color = hitImg;
                 scoreCounter.hit();

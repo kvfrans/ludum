@@ -24,8 +24,8 @@ public class BeatScroller : MonoBehaviour
         //song1 stats
         song1.Add("Length",21.46f);
         song1.Add("Tempo",90f/60f);//beats per s
-        song1.Add("scrollSpeed",distanceToClicker/(2f/(float)song1["Tempo"]));//whole bar is 2 beat
-        float num = 0.325f; //offset
+        song1.Add("scrollSpeed",distanceToClicker/(2.5f/(float)song1["Tempo"]));//whole bar is 2 beat
+        float num = 0.2f; //offset
         while (num < (float)song1["Length"]){
             map1.Add(num);
             num+=1/(float)song1["Tempo"];
