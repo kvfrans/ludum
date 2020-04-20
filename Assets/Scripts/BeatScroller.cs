@@ -13,11 +13,13 @@ public class BeatScroller : MonoBehaviour
     public int currSongIndex;
     public List<float> currMap = new List<float>();
     private List<GameObject> spawnList = new List<GameObject>();
-    public Hashtable[] songList = new Hashtable[2];
+    public Hashtable[] songList = new Hashtable[3];
     private Hashtable song1 = new Hashtable();
     public List<float> map1 = new List<float>();
     private Hashtable song2 = new Hashtable();
     public List<float> map2 = new List<float>();
+    private Hashtable song3 = new Hashtable();
+    public List<float> map3 = new List<float>();
 
     void Start()
     {
@@ -54,6 +56,28 @@ public class BeatScroller : MonoBehaviour
         }
         song2.Add("beatMap",map2);
         songList[1] = song2;
+
+        //song2stats
+        song3.Add("Length",19.32f);
+        song3.Add("Tempo",100f/60f);//beats per s
+        song3.Add("scrollSpeed",distanceToClicker/(2f/(float)song3["Tempo"]));//whole bar is 2 beat
+        num = 1.3f; //offset
+        iter = 0;
+        while (num < (float)song3["Length"]){
+            map3.Add(num);
+            if (iter%3==0){
+                num+=3f/20f*7f;
+            }
+            else if (iter%3==1){
+                num+=3f/20f*1f;
+            }
+            else if (iter%3==2){
+                num+=3f/20f*6f;
+            }
+            iter+=1;
+        }
+        song3.Add("beatMap",map3);
+        songList[2] = song3;
     }
 
     // Update is called once per frame

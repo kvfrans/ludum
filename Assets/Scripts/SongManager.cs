@@ -20,6 +20,7 @@ public class SongManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(songTimer);
         
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -29,6 +30,11 @@ public class SongManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             currentSong =1;
+            startPlaying = true;
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentSong =2;
             startPlaying = true;
         }
         if(startPlaying)
@@ -58,7 +64,7 @@ public class SongManager : MonoBehaviour
     IEnumerator newSong(int num){
         StopAllAudio();
         if(startPlaying){
-            MS[2].Play();
+            MS[3].Play();
         }
         yield return new WaitForSeconds(0.5f);
         startPlaying = true;
