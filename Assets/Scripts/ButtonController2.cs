@@ -15,6 +15,9 @@ public class ButtonController2 : MonoBehaviour
     public GameObject sc;
     private ScoreCounter scoreCounter;
     private AudioSource audioSource;
+    public GameObject firstNote;
+    public GameObject secondNote;
+    
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
@@ -43,6 +46,16 @@ public class ButtonController2 : MonoBehaviour
             if (isNote){
                 SR.color = hitImg;
                 scoreCounter.hit();
+                firstNote.GetComponent<NoteController>().removeNote();
+                if (secondNote!=null){
+                    firstNote = secondNote;
+                }
+                else{
+                firstNote=null; 
+                } 
+                
+                    
+                
             }
             else{
                 scoreCounter.breakCombo();
@@ -69,11 +82,20 @@ public class ButtonController2 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag== "note"){
             isNote = true;
+            if (firstNote!=null){
+                secondNote = other.gameObject;
+                
+            }
+            else{
+                firstNote = other.gameObject;
+            }
         }
     }   
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag== "note"){
-            isNote = false;
+            if (firstNote==null){
+                isNote = false;
+            }
         }
     }
 }
