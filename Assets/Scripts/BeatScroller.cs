@@ -13,13 +13,15 @@ public class BeatScroller : MonoBehaviour
     public int currSongIndex;
     public List<float> currMap = new List<float>();
     private List<GameObject> spawnList = new List<GameObject>();
-    public Hashtable[] songList = new Hashtable[3];
+    public Hashtable[] songList = new Hashtable[4];
     private Hashtable song1 = new Hashtable();
     public List<float> map1 = new List<float>();
     private Hashtable song2 = new Hashtable();
     public List<float> map2 = new List<float>();
     private Hashtable song3 = new Hashtable();
     public List<float> map3 = new List<float>();
+    private Hashtable song4 = new Hashtable();
+    public List<float> map4 = new List<float>();
 
     void Start()
     {
@@ -57,7 +59,7 @@ public class BeatScroller : MonoBehaviour
         song2.Add("beatMap",map2);
         songList[1] = song2;
 
-        //song2stats
+        //song3stats
         song3.Add("Length",19.32f);
         song3.Add("Tempo",100f/60f);//beats per s
         song3.Add("scrollSpeed",distanceToClicker/(2f/(float)song3["Tempo"]));//whole bar is 2 beat
@@ -87,6 +89,33 @@ public class BeatScroller : MonoBehaviour
         }
         song3.Add("beatMap",map3);
         songList[2] = song3;
+
+         //song3stats
+        song4.Add("Length",16f);
+        song4.Add("Tempo",120f/60f);//beats per s
+        song4.Add("scrollSpeed",distanceToClicker/(1.5f/(float)song4["Tempo"]));//whole bar is 2 beat
+        num = 0f; //offset
+        iter = 0;
+        while (num < (float)song4["Length"]){
+            map4.Add(num);
+            if (iter%3==0){
+                num+=1f/8f*6f;
+            }
+            else if (iter%3==1){
+                num+=1f/8f*6f;
+            }
+            else if (iter%3==2){
+                num+=1f/8f*4f;
+            }
+           
+            // else if (iter%6==5){
+            //     num+=3f/20f*2f;
+            // }
+            iter+=1;
+        }
+        song4.Add("beatMap",map4);
+        songList[3] = song4;
+
     }
 
     // Update is called once per frame
