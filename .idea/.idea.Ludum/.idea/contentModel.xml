@@ -31,6 +31,7 @@
           <e p="Goon.cs" t="Include" />
           <e p="GoonCharge.cs" t="Include" />
           <e p="NoteController.cs" t="Include" />
+          <e p="Pickup.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="ScaleIn.cs" t="Include" />
           <e p="ScaleOut.cs" t="Include" />

@@ -9,9 +9,11 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb;
     public Transform spriteBody;
     public Transform gun;
+    public Transform dash;
 
-    public Transform bullet;
-    public Transform bulletBig;
+    public Transform bullet1;
+    public Transform bulletBig2;
+    public Transform bullet3;
     public Transform bulletOnShoot;
     
     private float bodyrot;
@@ -58,37 +60,63 @@ public class Player : MonoBehaviour {
         if (gun != null) {
             gun.localEulerAngles = new Vector3(0, 0, ang);
         }
-
-        if (Input.GetMouseButtonDown(0) && !(GameFlow.Instance.sm == null)) {
-            if (GameFlow.Instance.sm.currentSong == 0) {
-                Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
-                for (int i = 0; i < 6; i++) {
-                    Transform b = Instantiate(bullet, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
-                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 10 + camerarot) * (10 + Random.value * 5);
-                }
-            }
-            else if (GameFlow.Instance.sm.currentSong == 1) {
-                Transform bo = Instantiate(bulletBig, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
-                bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() + camerarot) * 10;
-                for (int i = 0; i < 6; i++) {
-                    Transform b = Instantiate(bullet, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
-                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 30 + camerarot) * (5-i*0.5f);
-                }
-            }
-            else if (GameFlow.Instance.sm.currentSong == 1) {
-                dashVelocity = Custom.VectorFromDir(ang) * 20;
-            }
-
-            cameras.DOKill();
-            cameras.localPosition = new Vector3(0,0,0);
-            cameras.localEulerAngles = new Vector3(0,0,0);
-            cameras.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*5), 0.2f);
-            cameras.DOPunchPosition(Custom.RandomInUnitCircle()*0.2f, 0.2f);
-        }
+        
 
         if (Input.GetMouseButtonDown(1)) {
             dashVelocity = Custom.VectorFromDir(ang) * 50;
         }
+    }
+
+    public void Shoot() {
+        Vector3 mousePosition = Input.mousePosition;
+        float ang = Mathf.Atan2( mousePosition.y - Screen.height/2.0f,  mousePosition.x - Screen.width/2.0f) * Mathf.Rad2Deg;
+        if (GameFlow.Instance.sm.currentSong == 0) {
+            Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+            for (int i = 0; i < 6; i++) {
+                Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 10 + camerarot) * (10 + Random.value * 5);
+            }
+        }
+        else if (GameFlow.Instance.sm.currentSong == 1) {
+            Transform bo = Instantiate(bulletBig2, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+            bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() + camerarot) * 10;
+            for (int i = 0; i < 6; i++) {
+                Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 30 + camerarot) * (5-i*0.5f);
+            }
+        }
+        else if (GameFlow.Instance.sm.currentSong == 2) {
+            float ang2 = Random.value * 360;
+            for (int j = 0; j < 5; j++) {
+                Transform bo = Instantiate(bullet3, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+                bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang2 + ang + Custom.RandUni() + camerarot + 72*j) * 10;
+                for (int i = 0; i < 4; i++) {
+                    Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang2 + ang + Custom.RandUni() * 10 + camerarot + 72*j) * (5 - i * 0.5f);
+                }
+            }
+        }
+        else if (GameFlow.Instance.sm.currentSong == 3) {
+            StartCoroutine(Dash());
+        }
+
+        cameras.DOKill();
+        cameras.localPosition = new Vector3(0,0,0);
+        cameras.localEulerAngles = new Vector3(0,0,0);
+        cameras.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*5), 0.2f);
+        cameras.DOPunchPosition(Custom.RandomInUnitCircle()*0.2f, 0.2f);
+    }
+
+    IEnumerator Dash() {
+        Vector3 mousePosition = Input.mousePosition;
+        float ang = Mathf.Atan2( mousePosition.y - Screen.height/2.0f,  mousePosition.x - Screen.width/2.0f) * Mathf.Rad2Deg;
+        dashVelocity = Custom.VectorFromDir(ang) * 50;
+        dash.DOScale(new Vector3(0.4f, 0.4f, 1), 0.1f);
+        dash.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        dash.DOScale(new Vector3(0f, 0f, 1), 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        dash.gameObject.SetActive(false);
     }
     
     public Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float z) {

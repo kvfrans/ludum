@@ -43,6 +43,7 @@ public class ButtonController2 : MonoBehaviour
             if (isNote){
                 SR.color = hitImg;
                 scoreCounter.hit();
+                GameFlow.Instance.player.GetComponent<Player>().Shoot();
             }
             else{
                 scoreCounter.breakCombo();
