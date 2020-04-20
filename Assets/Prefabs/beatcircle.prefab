@@ -127,6 +127,7 @@ MonoBehaviour:
   zone: 
   pressKey: 0
   buttonController: {fileID: 0}
+  fader: {fileID: 3719283773837422760, guid: f08898a6092944c54bdcc0c8e32f02b7, type: 3}
 --- !u!1 &7026069426089136915
 GameObject:
   m_ObjectHideFlags: 0

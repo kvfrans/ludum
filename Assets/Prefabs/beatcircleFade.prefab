@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3719283773837422760}
   - component: {fileID: 6283194213060453152}
-  - component: {fileID: 821730831168560994}
   - component: {fileID: -2936479293760721695}
   m_Layer: 5
   m_Name: beatcircleFade
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a0360b07eb534fdfbe193a762b4169e, type: 3}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0.3529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,32 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &821730831168560994
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3977746774692106551}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.29837492}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.66493505, y: 0.66493505}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.083599746, y: 0.049621046}
-  m_EdgeRadius: 0
 --- !u!114 &-2936479293760721695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 0.1
-  startTime: 10
+  startTime: 0
   destroyAfter: 1
 --- !u!1 &7026069426089136915
 GameObject:

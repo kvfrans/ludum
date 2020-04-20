@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
@@ -19,6 +20,11 @@ public class ScoreCounter : MonoBehaviour
     }
     public void hit(){
         score+=1;
+        transform.DOKill();
+        transform.localPosition = new Vector3(-0.668f,-0.17f,1);
+        transform.localEulerAngles = new Vector3(0,0,0);
+        transform.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*5), 0.2f);
+        transform.DOPunchPosition(Custom.RandomInUnitCircle()*0.01f, 0.01f);
     }
     public void breakCombo(){
         score=0;

@@ -9,6 +9,8 @@ public class NoteController : MonoBehaviour
     public string zone;
     public KeyCode pressKey;
     public ButtonController2 buttonController;
+
+    public Transform fader;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +46,10 @@ public class NoteController : MonoBehaviour
 
     }
 
-    public void removeNote(){
+    public void removeNote() {
+        Debug.Log("ok");
+        Transform t = Instantiate(fader, transform.position, transform.rotation);
+        t.localScale = transform.lossyScale;
         Destroy(gameObject);
     }
     // private void OnTriggerEnter2D(Collider2D other) {

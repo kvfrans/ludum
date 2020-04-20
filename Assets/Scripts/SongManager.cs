@@ -20,7 +20,7 @@ public class SongManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(songTimer);
+//        Debug.Log(songTimer);
         
         if (Input.GetKeyDown(KeyCode.F))
         {
