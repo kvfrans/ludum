@@ -48,12 +48,9 @@ public class ButtonController2 : MonoBehaviour
                 scoreCounter.hit();
                 GameFlow.Instance.player.GetComponent<Player>().Shoot();
                 firstNote.GetComponent<NoteController>().removeNote();
-                if (secondNote!=null){
-                    firstNote = secondNote;
-                }
-                else{
-                    firstNote=null; 
-                }
+                noteGone();
+                
+
             }
             else{
                 scoreCounter.breakCombo();
@@ -75,6 +72,7 @@ public class ButtonController2 : MonoBehaviour
     // }
     public void onNoteMiss()
     {
+        noteGone();
         missedNote = 15;
     }
     private void OnTriggerEnter2D(Collider2D other) {
@@ -89,11 +87,12 @@ public class ButtonController2 : MonoBehaviour
             }
         }
     }   
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag== "note"){
-            if (firstNote==null){
-                isNote = false;
-            }
+    void noteGone() {
+        firstNote = secondNote;
+        secondNote=null;
+        Debug.Log(firstNote);
+        if (firstNote==null){
+            isNote = false;
         }
     }
 }
