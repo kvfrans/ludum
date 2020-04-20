@@ -23,6 +23,7 @@ public class GameFlow : MonoBehaviour {
     public Transform ppv;
     private Volume v;
     ColorAdjustments ca;
+    public SongManager sm;
 
     public Transform goon;
     public Transform goon2;
@@ -46,7 +47,7 @@ public class GameFlow : MonoBehaviour {
         goonSpawner -= Time.deltaTime;
         goonSpawner2 -= Time.deltaTime;
         if (goonSpawner < 0) {
-            goonSpawner = 2;
+            goonSpawner = 0.8f;
             Transform g = Instantiate(goon, new Vector3(4, 4, -0.1f) + Custom.RandomInUnitCircle() * 20, Quaternion.identity);
         }
         if (goonSpawner2 < 0) {

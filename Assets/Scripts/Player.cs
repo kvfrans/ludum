@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     public Transform gun;
 
     public Transform bullet;
+    public Transform bulletBig;
     public Transform bulletOnShoot;
     
     private float bodyrot;
@@ -58,14 +59,24 @@ public class Player : MonoBehaviour {
             gun.localEulerAngles = new Vector3(0, 0, ang);
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang)*0.3f + new Vector3(0,0,-2), Quaternion.identity);
-//            bo.GetComponent<Rigidbody2D>().velocity += rb.velocity * 0.8f;
-
-            for (int i = 0; i < 6; i++) {
-                Transform b = Instantiate(bullet, transform.position + new Vector3(0,0,-2), Quaternion.identity);
-                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni()*10 + camerarot) * (10 + Random.value * 5);
-//                b.GetComponent<Rigidbody2D>().velocity += rb.velocity * 0.8f;
+        if (Input.GetMouseButtonDown(0) && !(GameFlow.Instance.sm == null)) {
+            if (GameFlow.Instance.sm.currentSong == 0) {
+                Transform bo = Instantiate(bulletOnShoot, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+                for (int i = 0; i < 6; i++) {
+                    Transform b = Instantiate(bullet, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 10 + camerarot) * (10 + Random.value * 5);
+                }
+            }
+            else if (GameFlow.Instance.sm.currentSong == 1) {
+                Transform bo = Instantiate(bulletBig, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+                bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() + camerarot) * 10;
+                for (int i = 0; i < 6; i++) {
+                    Transform b = Instantiate(bullet, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 30 + camerarot) * (5-i*0.5f);
+                }
+            }
+            else if (GameFlow.Instance.sm.currentSong == 1) {
+                dashVelocity = Custom.VectorFromDir(ang) * 20;
             }
 
             cameras.DOKill();
