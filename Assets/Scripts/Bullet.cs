@@ -23,13 +23,6 @@ public class Bullet : MonoBehaviour {
         else if (other.gameObject.layer == LayerMask.NameToLayer("Walls") && collideWithSolid) {
             DestroyBullet();
         }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
-//            PlayerHitbox ph = other.GetComponent<PlayerHitbox>();
-//            if (ph != null) {
-//                other.transform.parent.GetComponent<Player>().TakeDamage();
-//            }
-        }
     }
     
     public void DestroyBullet() {

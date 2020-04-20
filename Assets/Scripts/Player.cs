@@ -77,26 +77,26 @@ public class Player : MonoBehaviour {
                 b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 10 + camerarot) * (10 + Random.value * 5);
             }
         }
-        else if (GameFlow.Instance.sm.currentSong == 1) {
-            Transform bo = Instantiate(bulletBig2, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
-            bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() + camerarot) * 10;
-            for (int i = 0; i < 6; i++) {
-                Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
-                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 30 + camerarot) * (5-i*0.5f);
-            }
-        }
+//        else if (GameFlow.Instance.sm.currentSong == 1) {
+//            Transform bo = Instantiate(bulletBig2, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+//            bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() + camerarot) * 10;
+//            for (int i = 0; i < 6; i++) {
+//                Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+//                b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang + Custom.RandUni() * 30 + camerarot) * (5-i*0.5f);
+//            }
+//        }
+//        else if (GameFlow.Instance.sm.currentSong == 2) {
+//            float ang2 = Random.value * 360;
+//            for (int j = 0; j < 5; j++) {
+//                Transform bo = Instantiate(bullet3, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
+//                bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang2 + ang + Custom.RandUni() + camerarot + 72*j) * 10;
+//                for (int i = 0; i < 4; i++) {
+//                    Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
+//                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang2 + ang + Custom.RandUni() * 10 + camerarot + 72*j) * (5 - i * 0.5f);
+//                }
+//            }
+//        }
         else if (GameFlow.Instance.sm.currentSong == 2) {
-            float ang2 = Random.value * 360;
-            for (int j = 0; j < 5; j++) {
-                Transform bo = Instantiate(bullet3, transform.position + Custom.Vector3FromDir(ang) * 0.3f + new Vector3(0, 0, -2), Quaternion.identity);
-                bo.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang2 + ang + Custom.RandUni() + camerarot + 72*j) * 10;
-                for (int i = 0; i < 4; i++) {
-                    Transform b = Instantiate(bullet1, transform.position + new Vector3(0, 0, -2), Quaternion.identity);
-                    b.GetComponent<Rigidbody2D>().velocity = Custom.VectorFromDir(ang2 + ang + Custom.RandUni() * 10 + camerarot + 72*j) * (5 - i * 0.5f);
-                }
-            }
-        }
-        else if (GameFlow.Instance.sm.currentSong == 3) {
             StartCoroutine(Dash());
         }
 

@@ -24,11 +24,14 @@ public class GameFlow : MonoBehaviour {
     private Volume v;
     ColorAdjustments ca;
     public SongManager sm;
+    public ScoreCounter sc;
 
     public Transform goon;
     public Transform goon2;
+    public Transform song;
     private float goonSpawner = 0;
     private float goonSpawner2 = 0;
+    private float songSpawner = 0;
 
     public float hueShift = 0;
     
@@ -46,6 +49,7 @@ public class GameFlow : MonoBehaviour {
 
         goonSpawner -= Time.deltaTime;
         goonSpawner2 -= Time.deltaTime;
+        songSpawner -= Time.deltaTime;
         if (goonSpawner < 0) {
             goonSpawner = 0.8f;
             Transform g = Instantiate(goon, new Vector3(4, 4, -0.1f) + Custom.RandomInUnitCircle() * 20, Quaternion.identity);
@@ -53,6 +57,10 @@ public class GameFlow : MonoBehaviour {
         if (goonSpawner2 < 0) {
             goonSpawner2 = 4;
             Transform g = Instantiate(goon2, new Vector3(4, 4, -0.1f) + Custom.RandomInUnitCircle() * 20, Quaternion.identity);
+        }
+        if (songSpawner < 0) {
+            songSpawner = 4;
+            Transform g = Instantiate(song, new Vector3(4, 4, -0.1f) + Custom.RandomInUnitCircle() * 20, Quaternion.identity);
         }
 
     }
