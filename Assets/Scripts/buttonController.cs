@@ -11,10 +11,13 @@ public class ButtonController : MonoBehaviour
     public Sprite missImg;
     public KeyCode keyToHit;
     private bool isNote;
-    private int missedNote;
+    private int missedNote=-1;
+    public GameObject sc;
+    private ScoreCounter scoreCounter;
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
+        scoreCounter = sc.GetComponent<ScoreCounter>();
     }
 
     // Update is called once per frame
@@ -22,6 +25,10 @@ public class ButtonController : MonoBehaviour
     {
         transform.Rotate (0,0,90*Time.deltaTime); 
         if (missedNote>0){
+            Debug.Log("klol");
+            if (missedNote ==15){
+                scoreCounter.breakCombo();
+            }
             SR.sprite = missImg;
             missedNote -=1;
         }
@@ -33,8 +40,10 @@ public class ButtonController : MonoBehaviour
         {
             if (isNote){
                 SR.sprite = hitImg;
+                scoreCounter.hit();
             }
             else{
+                scoreCounter.breakCombo();
                 SR.sprite = missImg;
                 //clicked on nothing
             }
