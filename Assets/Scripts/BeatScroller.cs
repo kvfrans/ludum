@@ -61,28 +61,28 @@ public class BeatScroller : MonoBehaviour
         song3.Add("Length",19.32f);
         song3.Add("Tempo",100f/60f);//beats per s
         song3.Add("scrollSpeed",distanceToClicker/(2f/(float)song3["Tempo"]));//whole bar is 2 beat
-        num = 1.4f; //offset
+        num = 1.7f; //offset
         iter = 0;
         while (num < (float)song3["Length"]){
             map3.Add(num);
-            if (iter%6==0){
+            if (iter%5==0){
                 num+=3f/20f*4f;
             }
-            else if (iter%6==1){
+            else if (iter%5==1){
                 num+=3f/20f*3f;
             }
-            else if (iter%6==2){
+            else if (iter%5==2){
                 num+=3f/20f*1f;
             }
-            else if (iter%6==3){
+            else if (iter%5==3){
                 num+=3f/20f*4f;
             }
-            else if (iter%6==4){
-                num+=3f/20f*2f;
+            else if (iter%5==4){
+                num+=3f/20f*4f;
             }
-            else if (iter%6==5){
-                num+=3f/20f*2f;
-            }
+            // else if (iter%6==5){
+            //     num+=3f/20f*2f;
+            // }
             iter+=1;
         }
         song3.Add("beatMap",map3);
