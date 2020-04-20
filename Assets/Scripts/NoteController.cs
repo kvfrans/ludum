@@ -8,14 +8,14 @@ public class NoteController : MonoBehaviour
     public Vector3 speed;
     public string zone;
     public KeyCode pressKey;
-    public ButtonController buttonController;
+    public ButtonController2 buttonController;
     // Start is called before the first frame update
     void Start()
     {
         zone = "None";
         transform.localScale = new Vector3(5f,5f,1f);
         GameObject clicker = GameObject.Find("Clicker");
-        buttonController = clicker.GetComponent<ButtonController>();
+        buttonController = clicker.GetComponent<ButtonController2>();
     }
 
     // Update is called once per frame

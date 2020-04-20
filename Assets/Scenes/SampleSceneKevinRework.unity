@@ -1531,8 +1531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unclickImg: {r: 1, g: 1, b: 1, a: 1}
-  hitImg: {r: 0, g: 1, b: 0.00002193451, a: 1}
-  missImg: {r: 1, g: 0.08909069, b: 0, a: 1}
+  hitImg: {r: 0, g: 1, b: 0.027116776, a: 1}
+  missImg: {r: 1, g: 0, b: 0, a: 1}
   keyToHit: 0
   sc: {fileID: 992963027}
 --- !u!212 &469449948

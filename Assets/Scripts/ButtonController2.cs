@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonController : MonoBehaviour
+public class ButtonController2 : MonoBehaviour
 {
     // Start is called before the first frame update
     private SpriteRenderer SR;
