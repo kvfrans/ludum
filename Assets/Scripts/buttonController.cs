@@ -28,7 +28,7 @@ public class ButtonController : MonoBehaviour
             if (missedNote ==15){
                 scoreCounter.breakCombo();
             }
-            SR.sprite = missImg;
+            SR.color = missImg;
             missedNote -=1;
         }
         if (missedNote==0){
@@ -38,12 +38,12 @@ public class ButtonController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (isNote){
-                SR.sprite = hitImg;
+                SR.color = hitImg;
                 scoreCounter.hit();
             }
             else{
                 scoreCounter.breakCombo();
-                SR.sprite = missImg;
+                SR.color = missImg;
                 //clicked on nothing
             }
 
