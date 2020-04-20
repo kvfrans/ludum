@@ -6,9 +6,9 @@ public class ButtonController : MonoBehaviour
 {
     // Start is called before the first frame update
     private SpriteRenderer SR;
-    public Sprite unclickImg;
-    public Sprite hitImg;
-    public Sprite missImg;
+    public Color unclickImg;
+    public Color hitImg;
+    public Color missImg;
     public KeyCode keyToHit;
     private bool isNote;
     private int missedNote;
@@ -22,27 +22,27 @@ public class ButtonController : MonoBehaviour
     {
         transform.Rotate (0,0,90*Time.deltaTime); 
         if (missedNote>0){
-            SR.sprite = missImg;
+            SR.color = missImg;
             missedNote -=1;
         }
         if (missedNote==0){
-            SR.sprite = unclickImg;
+            SR.color = unclickImg;
             missedNote -=1;
         }
         if (Input.GetMouseButtonDown(0))
         {
             if (isNote){
-                SR.sprite = hitImg;
+                SR.color = hitImg;
             }
             else{
-                SR.sprite = missImg;
+                SR.color = missImg;
                 //clicked on nothing
             }
 
         }
         if (Input.GetMouseButtonUp(0))
         {
-            SR.sprite = unclickImg;
+            SR.color = unclickImg;
         }
     }
 

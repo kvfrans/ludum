@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour {
 
     public void DestroyEnemy() {
         GameFlow.Instance.cameras.DOKill();
+        GameFlow.Instance.cameras.localPosition = new Vector3(0,0,0);
         GameFlow.Instance.cameras.localEulerAngles = new Vector3(0,0,0);
         GameFlow.Instance.cameras.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*8), 0.2f);
         GameFlow.Instance.cameras.DOPunchPosition(Custom.RandomInUnitCircle()*0.5f, 0.2f);

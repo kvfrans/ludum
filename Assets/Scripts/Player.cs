@@ -69,6 +69,7 @@ public class Player : MonoBehaviour {
             }
 
             cameras.DOKill();
+            cameras.localPosition = new Vector3(0,0,0);
             cameras.localEulerAngles = new Vector3(0,0,0);
             cameras.DOPunchRotation(new Vector3(0, 0, Custom.RandUni()*5), 0.2f);
             cameras.DOPunchPosition(Custom.RandomInUnitCircle()*0.2f, 0.2f);
