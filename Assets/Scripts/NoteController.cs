@@ -21,7 +21,7 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = transform.localScale + speed * Time.deltaTime;
+        transform.localScale = transform.localScale + speed * Time.unscaledDeltaTime;
         if (zone =="Perfect"){
             if (Input.GetMouseButtonDown(0)){
                 // buttonController.onNoteHit();

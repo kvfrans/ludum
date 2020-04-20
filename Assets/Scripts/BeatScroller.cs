@@ -61,7 +61,7 @@ public class BeatScroller : MonoBehaviour
     {
         if(started)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             if (timer >= currMap[currBeatIndex]){
                 spawnNote(currSongIndex);
                 currBeatIndex+=1;
